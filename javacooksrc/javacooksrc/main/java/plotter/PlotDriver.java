@@ -43,6 +43,17 @@ public class PlotDriver {
         r.drawString("Hello World");
         r.penColor(4);
         r.drawBox(10, 10);
+
+        //Draw a triangle with moveTo and rmoveTo
+        //proves that the PlotterAWT moveTo and rmoveTo works fine even when you don't have a drawBox afterward.
+        r.penUp();
+        r.moveTo(r.MAXX - 10, r.MAXY - 10);
+        r.penDown();
+        r.penColor(1);
+        r.rmoveTo(-50, 0);
+        r.rmoveTo(50,-50);
+        r.rmoveTo(0, 50);
+        r.penUp();
     }
 }
 // END main

@@ -44,12 +44,17 @@ public class PlotterAWT extends Plotter {
     }
 
     public void rmoveTo(int incrx, int incry){
-        moveTo(curx += incrx, cury += incry);
+        //the moveTo method will update the curx and cury to the abs coordinates,
+        //so we should not update curx and cury here
+        moveTo(curx + incrx, cury +incry);
     }
 
     public void moveTo(int absx, int absy){
-        if (!penIsUp)
+        //everytime we draw a line we need to repaint to make sure the canvas is updated in every situation
+        if (!penIsUp) {
             g.drawLine(curx, cury, absx, absy);
+            p.repaint();
+        }
         curx = absx;
         cury = absy;
     }
